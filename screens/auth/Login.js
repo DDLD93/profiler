@@ -1,5 +1,9 @@
 import { Box, Text, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, NativeBaseProvider } from "native-base";
+import { useContext } from "react";
+import {CredentialsContext} from "../../context/authContext"
 export default function Login() {
+    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+
     const persistLogin = (credentials, message, status) => {
         AsyncStorage.setItem('userAuth', JSON.stringify(credentials))
           .then(() => {
@@ -40,7 +44,7 @@ export default function Login() {
                         Forget Password?
                     </Link>
                 </FormControl>
-                <Button mt="2" colorScheme="indigo">
+                <Button onPress={()=>setStoredCredentials({user:"umaru"})} mt="2" colorScheme="indigo">
                     Sign in
                 </Button>
                 <HStack mt="6" justifyContent="center">
@@ -61,3 +65,13 @@ export default function Login() {
         </Box>
     </Center>;
 };
+
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
+  // const clearLogin = () => {
+  //   AsyncStorage.removeItem('flowerCribCredentials')
+  //     .then(() => {
+  //       setStoredCredentials("");
+  //     })
+  //     .catch((error) => console.log(error));
+  // };

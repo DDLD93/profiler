@@ -1,14 +1,15 @@
 import { Box, Text, Heading, VStack, useColorMode, Switch, Link, Button, HStack, Center, NativeBaseProvider } from "native-base";
 import NativeBaseIcon from "../../components/NativeBaseIcon";
 import { Platform } from "react-native";
-export default function Login() {
+import MenuDrawer from "../../components/MenuDrawer";
+export default function Home() {
     return   <Center
     _dark={{ bg: "blueGray.900" }}
     _light={{ bg: "blueGray.50" }}
-    px={4}
     flex={1}
   >
-    <VStack space={5} alignItems="center">
+    <MenuDrawer/>
+    {/* <VStack space={5} alignItems="center">
       <NativeBaseIcon />
       <Heading size="lg">Welcome to NativeBase</Heading>
       <HStack space={2} alignItems="center">
@@ -35,7 +36,7 @@ export default function Login() {
         </Text>
       </Link>
       <ToggleDarkMode />
-    </VStack>
+    </VStack> */}
   </Center> 
    
 };
