@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // screens
 import Login from '../screens/auth/Login';
-import Home from './../screens/private/Home';
+import Private from './../screens/private/index';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +23,7 @@ const RootStack = () => {
               headerStyle: {
                 backgroundColor: 'transparent',
               },
-            //   headerTintColor: tertiary,
+              //   headerTintColor: tertiary,
               headerTransparent: true,
               headerTitle: '',
               headerLeftContainerStyle: {
@@ -34,10 +34,11 @@ const RootStack = () => {
             {storedCredentials ? (
               <Stack.Screen
                 options={{
-                //   headerTintColor: primary,
-                }}
-                name="Welcome"
-                component={Home}
+                  //   headerTintColor: primary,
+                  
+                  }}
+                name="Private"
+                component={Private}
               />
             ) : (
               <>

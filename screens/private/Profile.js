@@ -2,7 +2,7 @@ import { Box, Text, Heading, VStack, useColorMode, Switch, Link, Button, HStack,
 import NativeBaseIcon from "../../components/NativeBaseIcon";
 import { Platform } from "react-native";
 import MenuDrawer from "../../components/MenuDrawer";
-export default function Home() {
+export default function Profile() {
     return   <Center
     _dark={{ bg: "blueGray.900" }}
     _light={{ bg: "blueGray.50" }}
@@ -10,7 +10,7 @@ export default function Home() {
   >
     <VStack space={5} alignItems="center">
       <NativeBaseIcon />
-      <Heading size="lg">Welcome to Home</Heading>
+      <Heading size="lg">Welcome to Profile</Heading>
       <HStack space={2} alignItems="center">
         <Text>Edit</Text>
         <Box
