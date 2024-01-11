@@ -1,22 +1,34 @@
-import { Box, Text, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, NativeBaseProvider } from "native-base";
-import { useContext } from "react";
+import { Box, Text, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, Image } from "native-base";
+import { useContext,useState } from "react";
 import {CredentialsContext} from "../../context/authContext"
 export default function Login() {
     const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+    const [isLoading, setisLoading] = useState(false)
 
     const persistLogin = (credentials, message, status) => {
-        AsyncStorage.setItem('userAuth', JSON.stringify(credentials))
-          .then(() => {
-            // handleMessage(message, status);
-            setStoredCredentials(credentials);
-          })
-          .catch((error) => {
-            handleMessage('Persisting login failed');
-            console.log(error);
-          });
+        setStoredCredentials(credentials);
+        // AsyncStorage.setItem('userAuth', JSON.stringify(credentials))
+        //   .then(() => {
+        //     // handleMessage(message, status);
+        //   })
+        //   .catch((error) => {
+        //     handleMessage('Persisting login failed');
+        //     console.log(error);
+        //   });
       };
+      function handleLogin() {
+        setisLoading(true);
+        setTimeout(() => {
+            persistLogin({user:"umaru"})
+            setisLoading(true);
+
+        }, 500);
+      }
     return <Center w="100%">
-        <Box safeArea p="2" py="8" w="90%" maxW="290">
+   <Image mt="10" size={150} borderRadius={100} source={{
+      uri: "https://wallpaperaccess.com/full/317501.jpg"
+    }} alt="Alternate Text" />        
+    <Box safeArea p="2" py="8" w="90%" maxW="290">
             <Heading size="lg" fontWeight="600" color="coolGray.800" _dark={{
                 color: "warmGray.50"
             }}>
@@ -44,10 +56,10 @@ export default function Login() {
                         Forget Password?
                     </Link>
                 </FormControl>
-                <Button onPress={()=>setStoredCredentials({user:"umaru"})} mt="2" colorScheme="indigo">
+                <Button isLoading={isLoading} isLoadingText="Signing In..." onPress={handleLogin} mt="2" >
                     Sign in
                 </Button>
-                <HStack mt="6" justifyContent="center">
+                {/* <HStack mt="6" justifyContent="center">
                     <Text fontSize="sm" color="coolGray.600" _dark={{
                         color: "warmGray.200"
                     }}>
@@ -60,7 +72,7 @@ export default function Login() {
                     }} href="#">
                         Sign Up
                     </Link>
-                </HStack>
+                </HStack> */}
             </VStack>
         </Box>
     </Center>;
