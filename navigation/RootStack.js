@@ -12,6 +12,7 @@ const Stack = createStackNavigator();
 
 // credentials context
 import { CredentialsContext } from './../context/authContext';
+import NavBar from '../components/NavBar';
 
 const RootStack = () => {
   return (
@@ -31,7 +32,8 @@ const RootStack = () => {
               },
             }}
           >
-            {storedCredentials ? (
+            {!storedCredentials ? (
+              <>
               <Stack.Screen
                 options={{
                   //   headerTintColor: primary,
@@ -40,6 +42,7 @@ const RootStack = () => {
                 name="Private"
                 component={Private}
               />
+              </>
             ) : (
               <>
                 <Stack.Screen name="Login" component={Login} />
