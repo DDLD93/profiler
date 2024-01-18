@@ -46,6 +46,8 @@ function Tabs() {
               size={40}
               style={{
                 marginTop: -15,
+                backgroundColor: "red",
+                borderRadius: "50%",
               }}
             />
           ),
